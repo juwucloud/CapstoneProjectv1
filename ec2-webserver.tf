@@ -2,7 +2,8 @@
 
 # EC2 Webserver Instance in us-west-2a
 resource "aws_instance" "WebserverInstance" {
-    ami                     = var.webserver_ami
+    # giving the latest ami to the ec2 instance if no ami is configured
+    ami = var.webserver_ami != null ? var.webserver_ami : data.aws_ssm_parameter.al2023_latest.value
     instance_type           = var.instance_type
     availability_zone       = var.aws_availability_zone_a
     vpc_security_group_ids  = [

@@ -22,12 +22,17 @@ variable "aws_instance_type_t3micro" {
   default     = "t3.micro"
 }
 
-variable "webserver_ami" {
-    type = string
-    description = "Basic linux 2023 kernel-6.1 AMI"
-    default = "ami-04f9aa2b7c7091927"
-  
+# getting the latest Amazon Linux 2023
+data "aws_ssm_parameter" "al2023_latest" {
+  name = "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
 }
+
+variable "webserver_ami" {
+  type        = string
+  description = "AMI for Webserver"
+  default     = null
+}
+
 
 variable "instance_type" {
     type = string
