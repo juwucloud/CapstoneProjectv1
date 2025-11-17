@@ -10,12 +10,11 @@ resource "aws_instance" "WebserverInstance" {
         aws_security_group.http_sg.id
     ]
     subnet_id = aws_subnet.public_subnet_1.id
+    iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
+
 
     # worpress + mariadb + php
     user_data = file("${path.module}/userdata-ec2-wordpress.sh")
-
-
-
 
     tags = {
         name = "Wordpress_Webserver"
