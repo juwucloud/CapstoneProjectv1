@@ -3,6 +3,9 @@ resource "aws_security_group" "ssh_sg" {
   name        = "SSH Security Group"
   vpc_id      = aws_vpc.capstone_vpc.id
   description = "Allow SSH access to EC2 instances"
+  tags = {
+    name = ssh_security_group
+  }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "ssh_sg_inbound_rule" {
@@ -27,6 +30,9 @@ resource "aws_security_group" "http_sg" {
   name        = "HTTP Security Group"
   vpc_id      = aws_vpc.capstone_vpc.id
   description = "Allow HTTP access to EC2 instances"
+  tags = {
+    name = http_security_group
+  }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "http_sg_inbound_rule" {
