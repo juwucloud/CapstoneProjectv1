@@ -50,10 +50,10 @@ resource "aws_route_table_association" "publicb" {
 # Associate Private Routetables 
 resource "aws_route_table_association" "privatea" {
   subnet_id      = aws_subnet.private_subnet_1.id
-  route_table_id = aws_route_table.publicRT.id
+  route_table_id = aws_route_table.priavteRT
 }
 
 resource "aws_route_table_association" "privateb" {
   subnet_id      = aws_subnet.private_subnet_2.id
-  route_table_id = aws_route_table.publicRT.id
+  route_table_id = aws_route_table.privateRT.id
 }
