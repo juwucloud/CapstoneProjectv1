@@ -40,3 +40,35 @@ variable "instance_type" {
     default = "t3.micro"
   
 }
+
+
+## Secrets
+variable "db_user" {
+    type = string
+    description = "User for the WP database"
+    sensitive = true
+}
+
+variable "dbuser_password" {
+    type = string
+    description = "The password for the user in WP database"
+    sensitive = true
+}
+
+variable "db_root_user" {
+    type = string
+    description = "The root user for the DB"
+    sensitive = true
+}
+
+variable "dbroot_password" {
+    type = string
+    description = "The password for the root user in DB"
+    sensitive = true
+}
+
+variable "wp_admin_email" {
+    type = string
+    description = "The admin email for wordpress"
+    sensitive = true
+}

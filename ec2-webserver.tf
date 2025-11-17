@@ -13,7 +13,10 @@ resource "aws_instance" "WebserverInstance" {
     subnet_id = aws_subnet.public_subnet_1.id
 
     # worpress + mariadb + php
-    user_data = file("${path.module}/userdata-ec2-wordpress.sh")
+    user_data = templatefile("${path.module}/userdata-ec2-wordpress.sh", {
+    dbroot_password = var.dbroot_password
+    dbuser_password = var.dbuser_password
+  })
 
     tags = {
         Name = "Wordpress_Webserver"

@@ -35,11 +35,11 @@ systemctl restart httpd
 # -----------------------------
 # Secure MariaDB (non-interactive)
 # -----------------------------
-MYSQL_ROOT_PASSWORD="root"
-MYSQL_WP_PASSWORD="user"c
+MYSQL_ROOT_PASSWORD="${dbroot_password}"
+MYSQL_WP_PASSWORD="${dbuser_password}"
 
 mysql -u root <<EOF
-ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
+ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
 DELETE FROM mysql.user WHERE User='';
 DROP DATABASE IF EXISTS test;
 DELETE FROM mysql.db WHERE Db='test' OR Db='test\_%';
@@ -49,9 +49,9 @@ EOF
 # -----------------------------
 # Create WP Database + User
 # -----------------------------
-mysql -u root -p"${MYSQL_ROOT_PASSWORD}" <<EOF
+mysql -u root -p"$MYSQL_ROOT_PASSWORD" <<EOF
 CREATE DATABASE wordpressdb;
-CREATE USER 'wpuser'@'localhost' IDENTIFIED BY '${MYSQL_WP_PASSWORD}';
+CREATE USER 'wpuser'@'localhost' IDENTIFIED BY '$MYSQL_WP_PASSWORD';
 GRANT ALL PRIVILEGES ON wordpressdb.* TO 'wpuser'@'localhost';
 FLUSH PRIVILEGES;
 EOF
@@ -64,7 +64,7 @@ cp wp-config-sample.php wp-config.php
 
 sed -i "s/database_name_here/wordpressdb/" wp-config.php
 sed -i "s/username_here/wpuser/" wp-config.php
-sed -i "s/password_here/${MYSQL_WP_PASSWORD}/" wp-config.php
+sed -i "s/password_here/$MYSQL_WP_PASSWORD/" wp-config.php
 sed -i "s/localhost/localhost/" wp-config.php
 
 # -----------------------------
