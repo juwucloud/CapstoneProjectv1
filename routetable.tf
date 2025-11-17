@@ -30,7 +30,30 @@ resource "aws_route_table" "priavteRT" {
   }
 
   tags = {
-    Name = "publicRT"
+    Name = "privateRT"
   }
   
+}
+
+
+# Associate Public Routetables
+resource "aws_route_table_association" "publica" {
+  subnet_id      = aws_subnet.public_subnet_1
+  route_table_id = aws_route_table.publicRT
+}
+
+resource "aws_route_table_association" "publicb" {
+  subnet_id      = aws_subnet.public_subnet_2
+  route_table_id = aws_route_table.publicRT
+}
+
+# Associate Private Routetables 
+resource "aws_route_table_association" "privatea" {
+  subnet_id      = aws_subnet.private_subnet_1
+  route_table_id = aws_route_table.publicRT
+}
+
+resource "aws_route_table_association" "privateb" {
+  subnet_id      = aws_subnet.private_subnet_2
+  route_table_id = aws_route_table.publicRT
 }
