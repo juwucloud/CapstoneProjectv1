@@ -17,7 +17,7 @@ resource "aws_instance" "WebserverInstance" {
     user_data = file("${path.module}/userdata-ec2-wordpress.sh")
 
     tags = {
-        name = "Wordpress_Webserver"
+        Name = "Wordpress_Webserver"
     }
   
 }
