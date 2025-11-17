@@ -4,7 +4,7 @@ resource "aws_security_group" "ssh_sg" {
   vpc_id      = aws_vpc.capstone_vpc.id
   description = "Allow SSH access to EC2 instances"
   tags = {
-    name = ssh_security_group
+    name = "ssh_security_group"
   }
 }
 
@@ -31,7 +31,7 @@ resource "aws_security_group" "http_sg" {
   vpc_id      = aws_vpc.capstone_vpc.id
   description = "Allow HTTP access to EC2 instances"
   tags = {
-    name = http_security_group
+    name = "http_security_group"
   }
 }
 

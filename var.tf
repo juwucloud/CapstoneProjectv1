@@ -21,3 +21,17 @@ variable "aws_instance_type_t3micro" {
   description = "value for the instance type"
   default     = "t3.micro"
 }
+
+variable "webserver_ami" {
+    type = string
+    description = "Basic linux 2023 kernel-6.1 AMI"
+    default = "ami-04f9aa2b7c7091927"
+  
+}
+
+variable "instance_type" {
+    type = string
+    description = "t3.micro instance"
+    default = "t3.micro"
+  
+}
