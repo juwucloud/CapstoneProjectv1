@@ -21,7 +21,7 @@ resource "aws_route_table" "publicRT" {
 
 # Private Route Table
 
-resource "aws_route_table" "priavteRT" {
+resource "aws_route_table" "privateRT" {
   vpc_id = aws_vpc.wordpress_vpc.id
 
   route {
@@ -50,7 +50,7 @@ resource "aws_route_table_association" "publicb" {
 # Associate Private Routetables 
 resource "aws_route_table_association" "privatea" {
   subnet_id      = aws_subnet.private_subnet_1.id
-  route_table_id = aws_route_table.priavteRT
+  route_table_id = aws_route_table.privateRT
 }
 
 resource "aws_route_table_association" "privateb" {
