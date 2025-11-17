@@ -21,7 +21,7 @@ resource "aws_route_table" "publicRT" {
 
 # Private Route Table
 
-resource "aws_route_table" "publicRT" {
+resource "aws_route_table" "priavteRT" {
   vpc_id = aws_vpc.wordpress_vpc
 
   route {
