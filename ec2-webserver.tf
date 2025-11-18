@@ -10,6 +10,7 @@ resource "aws_instance" "WebserverInstance" {
         aws_security_group.ssh_sg.id, 
         aws_security_group.http_sg.id
     ]
+    key_name                = aws_key_pair.wp_key.key_name
     subnet_id = aws_subnet.public_subnet_1.id
 
     # worpress + mariadb + php
