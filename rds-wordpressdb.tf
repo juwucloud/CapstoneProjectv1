@@ -6,7 +6,7 @@ resource "aws_db_instance" "wordpressdb" {
   username             = var.db_user
   password             = var.dbuser_password
   tags = {
-    Name = "Wordpress_RDS_Database"
+    Name = "jw_capstone_Wordpress_RDS_Database"
   } 
 
 
