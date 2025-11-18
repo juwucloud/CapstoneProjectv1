@@ -16,3 +16,10 @@ resource "aws_db_instance" "wordpressdb" {
   skip_final_snapshot  = true
   vpc_security_group_ids = [aws_security_group.mysql_sg.id]
 }
+
+
+# Output the RDS endpoint
+output "rds_endpoint" {
+  value = aws_db_instance.wordpressdb.endpoint
+}
+

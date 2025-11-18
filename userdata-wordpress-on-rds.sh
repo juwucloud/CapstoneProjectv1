@@ -47,9 +47,6 @@ systemctl restart httpd
 # EOF
 
 
-
-
-
 # -----------------------------
 # Configure wp-config.php (RDS)
 # -----------------------------
