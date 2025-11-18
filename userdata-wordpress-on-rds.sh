@@ -68,9 +68,24 @@ sed -i "s/localhost/$DB_HOST/" wp-config.php
 ####################### -----------------------------
 # Create WP Database + User
 # -----------------------------
-mysql -h $DB_HOST -u $DB_USER -p $DB_PASSWORD <<EOF
-CREATE DATABASE $DB_NAME;
-EOF
+# Wait for RDS to accept connections, retry a few times before giving up
+retry_count=0
+max_retries=30
+until mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" -e "SELECT 1;" >/dev/null 2>&1; do
+	retry_count=$((retry_count+1))
+	echo "Waiting for RDS to be ready... attempt $retry_count/$max_retries"
+	if [ "$retry_count" -ge "$max_retries" ]; then
+		echo "RDS not reachable after $retry_count attempts" >&2
+		break
+	fi
+	sleep 10
+done
+
+if mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;"; then
+	echo "Database $DB_NAME ensured"
+else
+	echo "Failed to create database $DB_NAME" >&2
+fi
 
 # -----------------------------
 # Final Restart
