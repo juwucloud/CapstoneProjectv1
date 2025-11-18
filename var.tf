@@ -79,3 +79,9 @@ variable "wp_admin_email" {
     description = "The admin email for wordpress"
     sensitive = true
 }
+
+variable "db_name" {
+    type = string
+    description = "The name of the database"
+    default = "wordpressdb"
+}
