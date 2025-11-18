@@ -1,6 +1,7 @@
 provider "aws" {
-  region = "us-west-2"
+  region = var.region_us_west_2
 }
+
 
 provider "tls" {}
 provider "local" {}

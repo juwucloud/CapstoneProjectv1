@@ -59,7 +59,7 @@ cp wp-config-sample.php wp-config.php
 # RDS variables (must be passed via Terraform variables or SSM or secrets manager)
 DB_NAME="${db_name}"
 DB_USER="${db_user}"
-DB_PASSWORD="${db_password}"
+DB_PASSWORD="${dbuser_password}"
 DB_HOST="${db_endpoint}"        # e.g. mydb.xxxxxx.eu-central-1.rds.amazonaws.com
 
 sed -i "s/database_name_here/$DB_NAME/" wp-config.php

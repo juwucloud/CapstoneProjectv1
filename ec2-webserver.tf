@@ -17,6 +17,8 @@ resource "aws_instance" "WebserverInstance" {
     user_data = templatefile("${path.module}/userdata-wordpress-on-rds.sh", {
     dbroot_password = var.dbroot_password
     dbuser_password = var.dbuser_password
+    db_password     = var.dbuser_password
+    db_endpoint     = aws_db_instance.wordpressdb.address
     db_name         = var.db_name
     db_user         = var.db_user
 
