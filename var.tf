@@ -45,6 +45,7 @@ variable "instance_type" {
 variable "subnet_ids" {
   description = "List of subnet IDs for the RDS instance"
   type        = list(string)
+  default = [ "private_subnet_1", "private_subnet_2" ]
 }
 
 

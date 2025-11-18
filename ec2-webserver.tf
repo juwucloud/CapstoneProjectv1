@@ -18,6 +18,7 @@ resource "aws_instance" "WebserverInstance" {
     dbroot_password = var.dbroot_password
     dbuser_password = var.dbuser_password
     db_name         = var.db_name
+    db_user         = var.db_user
 
   })
 
