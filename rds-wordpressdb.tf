@@ -3,13 +3,16 @@ resource "aws_db_instance" "wordpressdb" {
   engine               = "mysql"
   engine_version       = null # gets the latest version
   instance_class       = "db.t3.micro"
-  name                 = "wordpressdb"
   username             = var.db_user
-  password             = var.db_password
+  password             = var.dbuser_password
+  tags = {
+    Name = "Wordpress_RDS_Database"
+  } 
 
 
-  db_subnet_group_id = aws_db_subnet_group.rds_subnets.id
+
+  db_subnet_group_name = aws_db_subnet_group.rds_subnets.name
   multi_az             = false
   skip_final_snapshot  = true
-  vpc_security_group_ids = [aws_security_group.rds_sg.id]
+  vpc_security_group_ids = [aws_security_group.mysql_sg.id]
 }

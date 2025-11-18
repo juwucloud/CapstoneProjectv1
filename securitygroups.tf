@@ -63,17 +63,18 @@ resource "aws_security_group" "mysql_sg" {
   }
 } 
 
-resource "aws_vpc_security_group_ingress_rule" "mysql_sg_inbound_rule" {
-  security_group_id = aws_security_group.mysql_sg.id
-
+resource "aws_security_group_rule" "mysql_sg_inbound_rule" {
+  type                     = "ingress"
+  security_group_id        = aws_security_group.mysql_sg.id
   source_security_group_id = aws_security_group.http_sg.id
   from_port                = 3306
-  ip_protocol              = "tcp"
   to_port                  = 3306
+  protocol                 = "tcp"
   description              = "Allow MySQL access to EC2 instances from security http securit group"
 }
 resource "aws_vpc_security_group_egress_rule" "mysql_sg_outbound_rule" {
   security_group_id = aws_security_group.mysql_sg.id
-
-  cidr_ipv4         = "0.0.0.0/0"
   
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1" # means "to all ports"
+} 

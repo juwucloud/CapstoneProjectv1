@@ -71,12 +71,9 @@ sed -i "s/localhost/$DB_HOST/" wp-config.php
 ####################### -----------------------------
 # Create WP Database + User
 # -----------------------------
-#mysql -u w -p"$MYSQL_ROOT_PASSWORD" <<EOF
-#CREATE DATABASE wordpressdb;
-#CREATE USER 'wpuser'@'localhost' IDENTIFIED BY '$MYSQL_WP_PASSWORD';
-#GRANT ALL PRIVILEGES ON wordpressdb.* TO 'wpuser'@'localhost';
-#FLUSH PRIVILEGES;
-#EOF
+mysql -h $DB_HOST -u $DB_USER -p $DB_PASSWORD <<EOF
+CREATE DATABASE $DB_NAME;
+EOF
 
 # -----------------------------
 # Final Restart
