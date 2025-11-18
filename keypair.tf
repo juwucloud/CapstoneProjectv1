@@ -1,18 +1,10 @@
-# create local private key 
-resource "tls_private_key" "wp_ssh" {
-    algorithm = "RSA"
-    rsa_bits  = 4096
-}
+/* Use a checked-in public key for reproducible keypairs.
+   Generate the keypair locally and commit only the public key to the repo
+   at `keys/wp_key.pub`. Keep the private key (`keys/wp_key`) on your machine
+   and do NOT commit it. */
 
-# public key to aws
 resource "aws_key_pair" "wp_key" {
-    key_name   = "wp_key"
-    public_key = tls_private_key.wp_ssh.public_key_openssh
+  key_name   = "wp_key"
+  public_key = file("${path.module}/keys/wp_key.pub")
 }
 
-# safe private key locally 
-resource "local_file" "wp_private_key" {
-    filename = pathexpand("~/Downloads/wp_key.pem")
-    content  = tls_private_key.wp_ssh.private_key_pem
-    file_permission = "0400"
-}
