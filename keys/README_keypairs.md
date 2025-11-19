@@ -8,7 +8,8 @@ Steps to generate and use keys (run on your local machine):
 
 ```bash
 ssh-keygen -t rsa -b 4096 -f ~/Downloads/wp_key -N ""
-mv ~/Downloads/wp_key pub && mv ~/Downloads/wp_key.pub keys/wp_key.pub
+mkdir -p keys
+mv ~/Downloads/wp_key.pub keys/wp_key.pub
 ```
 
 2. Commit only the public key to the repo:
