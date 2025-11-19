@@ -28,6 +28,7 @@ CapstoneProjectv1/
 ├── rds-wordpressdb.tf      # RDS MySQL instance for the WordPress database
 ├── var.tf                  # variable definitions (including all database-related values)
 └── ARCHIVE/                # deprecated/experimental files (e.g. older user data script)
+```
 
 All resources are currently defined in a single Terraform project for clarity.
 
