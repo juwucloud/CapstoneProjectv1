@@ -8,7 +8,7 @@ The focus is **network isolation, basic high availability for the database, and 
 ---
 
 ## Architecture Overview
-![Capstone Architecture Overview](images/level-2-capstone.drawio.png)
+![Capstone Architecture Overview](images/capstonearchitecture.drawio.png)
 ---
 
 ## Terraform Layout
