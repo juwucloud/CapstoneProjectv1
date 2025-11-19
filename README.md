@@ -15,17 +15,18 @@ The focus is **network isolation, basic high availability for the database, and 
 
 The configuration is split into simple, single-responsibility files:
 
-- `main.tf` – ties the resources together and configures the remote backend.
-- `region.tf` – AWS provider and region configuration.
-- `vpc-subnet.tf` – VPC, public and private subnets.
-- `internetgateway.tf` – Internet Gateway and VPC attachment.
-- `routetable.tf` – public and private route tables and associations.
-- `securitygroups.tf` – HTTP, SSH and MySQL security groups.
-- `subnetgroup.tf` – RDS DB subnet group over the private subnets.
-- `ec2-webserver.tf` – EC2 webserver instance, key pair reference and user data.
-- `rds-wordpressdb.tf` – RDS MySQL instance for the WordPress database.
-- `var.tf` – variable definitions (including all database-related values).
-- `ARCHIVE unused/` – deprecated or experimental files that are no longer used in the current setup (for example an older user data script).
+CapstoneProjectv1/
+├── main.tf                 # ties the resources together and configures the remote backend
+├── region.tf               # AWS provider and region configuration
+├── vpc-subnet.tf           # VPC, public and private subnets
+├── internetgateway.tf      # Internet Gateway and VPC attachment
+├── routetable.tf           # public and private route tables and associations
+├── securitygroups.tf       # HTTP, SSH and MySQL security groups
+├── subnetgroup.tf          # RDS DB subnet group over the private subnets
+├── ec2-webserver.tf        # EC2 webserver instance, key pair reference and user data
+├── rds-wordpressdb.tf      # RDS MySQL instance for the WordPress database
+├── var.tf                  # variable definitions (including all database-related values)
+└── ARCHIVE_unused/         # deprecated/experimental files (e.g. older user data script)
 
 All resources are currently defined in a single Terraform project for clarity.
 
