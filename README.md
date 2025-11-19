@@ -15,6 +15,7 @@ The focus is **network isolation, basic high availability for the database, and 
 
 The configuration is split into simple, single-responsibility files:
 
+```text
 CapstoneProjectv1/
 ├── main.tf                 # ties the resources together and configures the remote backend
 ├── region.tf               # AWS provider and region configuration
@@ -26,7 +27,7 @@ CapstoneProjectv1/
 ├── ec2-webserver.tf        # EC2 webserver instance, key pair reference and user data
 ├── rds-wordpressdb.tf      # RDS MySQL instance for the WordPress database
 ├── var.tf                  # variable definitions (including all database-related values)
-└── ARCHIVE_unused/         # deprecated/experimental files (e.g. older user data script)
+└── ARCHIVE/                # deprecated/experimental files (e.g. older user data script)
 
 All resources are currently defined in a single Terraform project for clarity.
 
